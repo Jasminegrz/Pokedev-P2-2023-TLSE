@@ -7,16 +7,20 @@
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
   align-items: center;
   justify-content: flex-start;
   align-content: stretch;
   box-shadow: 5px 5px 10px white;
   background: linear-gradient(180deg, #351d7c 0%, #ffffff 100%);
   text-shadow: 5px 5px 10px #2a69c0;
+  border-radius: 30px;
 
   color: #fff;
+}
+div.PokeProfil {
+  margin: auto;
+  max-width: 420px;
 }
 .ProfilSelected {
   height: 900px;
@@ -112,13 +116,22 @@ li {
   box-shadow: 5px 5px 10px #2a69c0;
   color: #fff;
 }
-
 .PokedevHeader {
-  display: none;
+  background-color: #041b3b;
+  border: 1px #041b3b solid;
+  height: 80px;
+  width: 100%;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
 
 .PokedevFooter {
-  display: none;
+  background-color: #041b3b;
+  border: 1px #041b3b solid;
+  height: 80px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  width: 100%;
 }
 
 @media screen and (min-width: 900px) {
@@ -178,23 +191,12 @@ li {
   .ProfilSelected.filter {
     display: none;
   }
-}
-.PokedevHeader {
-  display: initial;
-  background-color: #041b3b;
-  border: 1px #041b3b solid;
-  height: 250px;
-  width: 100%;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-}
 
-.PokedevFooter {
-  display: initial;
-  background-color: #041b3b;
-  border: 1px #041b3b solid;
-  height: 250px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  width: 100%;
+  .PokedevHeader {
+    height: 250px;
+  }
+
+  .PokedevFooter {
+    height: 250px;
+  }
 }

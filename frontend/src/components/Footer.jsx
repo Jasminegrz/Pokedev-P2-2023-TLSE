@@ -6,7 +6,8 @@ function Footer() {
 
   if (location.pathname === "/pokemain") {
     return (
-      <footer className="xl:bg-gradient-to-t bg-gradient-to-b from-blue-200 xl:from-blue-900 backdrop-blur-3xl via-rgba-27-3-199-3615 to-blue-100 opacity-50 xl:opacity-80 xl:text-white text-blue-950 py-4 flex items-center justify-evenly ">
+      // <footer className="xl:bg-gradient-to-t bg-gradient-to-b from-blue-200 xl:from-blue-900 backdrop-blur-3xl via-rgba-27-3-199-3615 to-blue-100 opacity-50 xl:opacity-80 xl:text-white text-blue-950 py-4 flex items-center justify-evenly ">
+      <footer className="min-h-0 bg-gradient-to-t from-black backdrop-blur-3xl text-white  pb-4 pt-10 flex items-center justify-evenly ">
         <p className="p-3">&copy;WCS Projet 2 - 06 Mai 2023</p>
         <Link to="/about">
           <button type="button" className=" xl:text-white text-xl">

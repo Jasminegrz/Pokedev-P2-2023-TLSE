@@ -43,7 +43,7 @@ function CardProfil({ dataTabUsers, filteredUser, handleClickProfil }) {
       <div className="xl:w-[50dvw] xl:flex xl:flex-wrap xl:justify-center xl:gap-5">
         {dataTabUsers.map((element) => (
           <ul
-            className="hidden xl:block xl:rounded-xl xl:box-border xl:bg-white xl:text-blue-700 xl:w-[40%] "
+            className="transition ease-in-out duration-200 shadow-md shadow-gray-300 opacity-70 hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:shadow-gray-300 hover:opacity-90 hidden xl:block xl:rounded-xl xl:box-border xl:bg-white xl:text-blue-700 xl:w-[40%] "
             key={element.id}
           >
             <button type="button" onClick={() => handleClickProfil(element)}>

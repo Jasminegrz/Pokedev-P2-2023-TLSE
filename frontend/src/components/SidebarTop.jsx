@@ -16,10 +16,11 @@ export default function SideBarTop({
   setUrl,
   filteredUrl,
   setFilteredUrl,
+  visibleTop,
+  setVisibleTop,
 }) {
   const [displayLocationValue, setdisplayLocationValue] = useState("");
   const [activeLanguages, setActiveLanguages] = useState([]);
-  const [visibleTop, setVisibleTop] = useState(false);
 
   useEffect(() => {
     if (
@@ -141,6 +142,16 @@ SideBarTop.propTypes = {
     )
   ).isRequired,
   setFilteredUrl: PropTypes.arrayOf(
+    PropTypes.objectOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])
+    )
+  ).isRequired,
+  visibleTop: PropTypes.arrayOf(
+    PropTypes.objectOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])
+    )
+  ).isRequired,
+  setVisibleTop: PropTypes.arrayOf(
     PropTypes.objectOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])
     )

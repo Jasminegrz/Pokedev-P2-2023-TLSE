@@ -12,7 +12,7 @@ import ModalProfile from "../components/ModalProfile";
 import "../css/CardProfil.css";
 import "../css/ModalProfile.css";
 import Footer from "../components/Footer";
-import lightLogo from "../assets/LogoLight.png";
+import darkLogo from "../assets/LogoDark.png";
 import leftArrow from "../assets/arrow-left-test.svg";
 import rightArrow from "../assets/arrow-right-test.svg";
 
@@ -40,6 +40,7 @@ export default function Pokemain({
   const [dataRepoSelected, setDataRepoSelected] = useState([]);
   const [langSelected, setLangSelected] = useState([]);
   const [click, setClick] = useState(false);
+  const [visibleTop, setVisibleTop] = useState(false);
 
   const handleClickProfil = (el) => {
     setSelected(el);
@@ -116,131 +117,140 @@ export default function Pokemain({
   scrollToTop();
   return (
     <div
-      className={`h-[auto] w-[100dvw] bg-gradient-to-b from-indigo-900 backdrop-blur-3xl via-rgba-27-3-199-3615 to-blue-100 xl:pokemain-bg bg-cover bg-center relative ${
+      className={`h-[auto] w-[100dvw] bg-gradient-to-b from-black via-blue-950 to-indigo-950 backdrop-blur-3xl  xl:pokemain-bg bg-cover bg-center relative ${
         isVisible ? "backdrop-filter backdrop-blur-lg" : ""
       }`}
     >
-      <div className="p-7 xl:p-0 xl:w-[100dvw]">
-        <h1 className="font-bold bg-gradient-to-b from-indigo-400 to-purple-600 text-transparent bg-clip-text text-5xl xl:text-left xl:p-5">
-          PokeDev
-        </h1>
-        <div className="flex items-center mb-5 mt-10 ">
-          <div className="bg-gray-300 w-1/2 h-1 xl:bg-gray-300 xl:w-1/2 xl:h-1 ">
-            <p className="invisible">Lorem</p>
-          </div>
-
-          <div className="xl:flex 1">
-            <SideBarTop
-              url={url}
-              setUrl={setUrl}
+      {loading ? (
+        <img src={loadingImg} alt="Loading..." />
+      ) : (
+        <div>
+          {isVisible && (
+            <ModalProfile
+              dataRepoSelected={dataRepoSelected}
+              dataSelected={dataSelected}
+              langSelected={langSelected}
+              click={click}
+              setIsVisible={setIsVisible}
+              dataRepos={dataRepos}
               dataTab={dataTab}
-              filteredUrl={filteredUrl}
-              setFilteredUrl={setFilteredUrl}
+              lang={lang}
+              dataGiters={dataGiters}
             />
-          </div>
-          <div className="bg-gray-300 w-1/2 h-1 xl:bg-gray-300 xl:w-1/2 xl:h-1">
-            <p className="invisible">Lorem</p>
+          )}
+        </div>
+      )}
+      <div className={(isVisible || visibleTop) && "contentModal"}>
+        <div className="p-7 xl:p-0 xl:w-[100dvw]">
+          {/* <h1 className="font-bold bg-gradient-to-b from-blue-400 to-purple-600 text-transparent bg-clip-text text-5xl xl:text-left xl:p-5"> */}
+          <h1 className="pokedevTextShadow font-bold text-5xl xl:text-left xl:p-5">
+            PokeDev
+          </h1>
+          <div className="flex items-center mb-5 mt-10 ">
+            <div className="bg-gray-300 w-1/2 h-1 xl:bg-gray-300 xl:w-1/2 xl:h-1 ">
+              <p className="invisible">Lorem</p>
+            </div>
+
+            <div className="xl:flex 1">
+              <SideBarTop
+                url={url}
+                setUrl={setUrl}
+                dataTab={dataTab}
+                filteredUrl={filteredUrl}
+                setFilteredUrl={setFilteredUrl}
+                visibleTop={visibleTop}
+                setVisibleTop={setVisibleTop}
+              />
+            </div>
+            <div className="bg-gray-300 w-1/2 h-1 xl:bg-gray-300 xl:w-1/2 xl:h-1">
+              <p className="invisible">Lorem</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="xl:flex xl:flex-wrap xl:w-[100dvw]">
-        <div className=" xl:w-[100%] xl:flex">
-          <div>
-            {getCurrentCards().length ? (
-              <CardProfil
-                dataTabUsers={getCurrentCards()}
-                handleClickProfil={handleClickProfil}
-                dataGiters={dataGiters}
-                filteredUser={getCurrentFilter()}
-              />
-            ) : (
-              <div className=" xl:h-[auto] xl:w-[100%] m-20 ">
-                <img src="src/assets/404.png" alt="erreur 404" />{" "}
-              </div>
-            )}
-          </div>
-          <div className="w-[100%] flex flex-col justify-center items-center ">
-            <div className="xl:w-[50%] xl:h-[70%] h-[50vh]text-black">
-              <PokedevProfil
-                dataSelected={dataSelected}
-                langSelected={langSelected}
-                click={click}
-                count={count}
-                setCount={setCount}
-                dataRepos={dataRepos}
-                dataTab={dataTab}
-                lang={lang}
-                dataGiters={dataGiters}
-                setIsVisible={setIsVisible}
-              />
-              {loading ? (
-                <img src={loadingImg} alt="Loading..." />
+        <div className="xl:flex xl:flex-wrap xl:w-[100dvw]">
+          <div className=" xl:w-[100%] xl:flex">
+            <div>
+              {getCurrentCards().length ? (
+                <CardProfil
+                  dataTabUsers={getCurrentCards()}
+                  handleClickProfil={handleClickProfil}
+                  dataGiters={dataGiters}
+                  filteredUser={getCurrentFilter()}
+                />
               ) : (
-                <div>
-                  {isVisible && (
-                    <ModalProfile
-                      dataRepoSelected={dataRepoSelected}
-                      dataSelected={dataSelected}
-                      langSelected={langSelected}
-                      click={click}
-                      setIsVisible={setIsVisible}
-                      dataRepos={dataRepos}
-                      dataTab={dataTab}
-                      lang={lang}
-                      dataGiters={dataGiters}
-                    />
-                  )}
+                <div className=" xl:h-[auto] xl:w-[100%] m-20 ">
+                  <img src="src/assets/404.png" alt="erreur 404" />{" "}
                 </div>
               )}
-              <div className="flex justify-center gap-7 p-3 ">
-                <button onClick={prevCards} type="button" className="hidden">
+            </div>
+            <div className="w-[100%] flex flex-col justify-center items-center ">
+              <div className="p-4 w-[100%] xl:w-[50%] xl:h-[70%] h-[50vh]text-black">
+                <PokedevProfil
+                  dataSelected={dataSelected}
+                  langSelected={langSelected}
+                  click={click}
+                  count={count}
+                  setCount={setCount}
+                  dataRepos={dataRepos}
+                  dataTab={dataTab}
+                  lang={lang}
+                  dataGiters={dataGiters}
+                  setIsVisible={setIsVisible}
+                />
+
+                <div className="flex justify-center gap-7 p-3 ">
+                  <button onClick={prevCards} type="button" className="hidden">
+                    <img
+                      src={leftArrow}
+                      alt="arrow"
+                      className="cursor-pointer w-[3.5dvw]"
+                    />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={randomCards}
+                    className="hidden"
+                  >
+                    <img src="./src/assets/random-btn.png" alt="random-btn" />
+                  </button>
+                  <button className="hidden" onClick={nextCards} type="button">
+                    <img
+                      src={rightArrow}
+                      alt="arrow"
+                      className="cursor-pointer w-[3.5dvw]"
+                    />
+                  </button>
+                </div>
+              </div>
+              <div className="hidden xl:flex xl:mt-5 xl:w-[17dvw] xl:justify-between  xl:p-3">
+                <button type="button" onClick={prevCards}>
                   <img
                     src={leftArrow}
                     alt="arrow"
-                    className="cursor-pointer w-[3.5dvw]"
+                    className="xl:cursor-pointer xl:w-[3.5dvw]"
                   />
                 </button>
 
-                <button type="button" onClick={randomCards} className="hidden">
+                <button type="button" onClick={randomCards} className="">
                   <img src="./src/assets/random-btn.png" alt="random-btn" />
                 </button>
-                <button className="hidden" onClick={nextCards} type="button">
+                <button onClick={nextCards} type="button">
                   <img
                     src={rightArrow}
                     alt="arrow"
-                    className="cursor-pointer w-[3.5dvw]"
+                    className="xl:cursor-pointer xl:w-[3.5dvw]"
                   />
                 </button>
               </div>
             </div>
-            <div className="hidden xl:flex xl:mt-5 xl:w-[17dvw] xl:justify-between  xl:p-3">
-              <button type="button" onClick={prevCards}>
-                <img
-                  src={leftArrow}
-                  alt="arrow"
-                  className="xl:cursor-pointer xl:w-[3.5dvw]"
-                />
-              </button>
-
-              <button type="button" onClick={randomCards} className="">
-                <img src="./src/assets/random-btn.png" alt="random-btn" />
-              </button>
-              <button onClick={nextCards} type="button">
-                <img
-                  src={rightArrow}
-                  alt="arrow"
-                  className="xl:cursor-pointer xl:w-[3.5dvw]"
-                />
-              </button>
-            </div>
           </div>
+          <div />
         </div>
-        <div />
+        <div className="flex m-5 justify-center xl:hidden">
+          <img src={darkLogo} className="w-[39dvw] cursor-pointer" alt="logo" />
+        </div>
       </div>
-      <div className="flex m-5 justify-center xl:hidden">
-        <img src={lightLogo} className="w-[39dvw] cursor-pointer" alt="logo" />
-      </div>
-
       <Footer />
     </div>
   );
