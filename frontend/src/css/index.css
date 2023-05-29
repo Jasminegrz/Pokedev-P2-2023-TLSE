@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .modal-bg {
+    background-image: url("../assets/dex-bg.png");
+  }
+  .logo-bg {
+    background-image: url("../assets/LogoLight.png");
+  }
+  .desc-bg {
+    background-image: url("../assets/bg-test2.png");
+  }
+
+  .flex-calc {
+    flex-basis: 33.33%;
+  }
+  .custom-p {
+    padding: 1px;
+  }
+  .via-rgba-27-3-199-3615 {
+    background-color: rgba(27, 3, 199, 0.3615);
+  }
+  .card-bg-haut {
+    background-image: url("../assets/bannière_haut.jpg");
+  }
+  .card-bg-bas {
+    background-image: url("../assets/bannière_bas.jpg");
+  }
+}

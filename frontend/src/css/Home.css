@@ -1,7 +1,6 @@
 .fleche {
   background-color: #fff;
   width: 35%;
-  /* animation: MoveUpDown 2s linear infinite; */
   border: 5px #fff solid;
   border-radius: 80%;
 }
