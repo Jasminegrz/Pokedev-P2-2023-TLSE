@@ -78,7 +78,7 @@ function PokedevProfil({
 
   return (
     <div className="PokeProfil">
-      <div className="PokedevHeader" />
+      <div className="PokedevHeader card-bg-haut bg-cover" />
       {click === true ? renderSelected() : renderInit()}
       <div className="PokedevButtons">
         <button onClick={count > 0 ? handleClickPrec : null} type="button">
@@ -91,7 +91,7 @@ function PokedevProfil({
           Suivant
         </button>
       </div>
-      <div className="PokedevFooter" />{" "}
+      <div className="PokedevFooter card-bg-bas bg-cover" />{" "}
     </div>
   );
 }

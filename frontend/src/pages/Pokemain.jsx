@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import "primereact/resources/themes/lara-dark-indigo/theme.css";
 import "primereact/resources/primereact.css";
@@ -15,6 +15,7 @@ import Footer from "../components/Footer";
 import darkLogo from "../assets/LogoDark.png";
 import leftArrow from "../assets/arrow-left-test.svg";
 import rightArrow from "../assets/arrow-right-test.svg";
+import PokedevTitle from "../components/PokedevTitle";
 
 // dataTabUser est une fonction qui retourne un tableau d'objet avec les infos des users 6 par 6
 // qui est passé en props au composant CardProfil, il est le résultat de l'appel API sur le endpoint user
@@ -117,7 +118,7 @@ export default function Pokemain({
   scrollToTop();
   return (
     <div
-      className={`h-[auto] w-[100dvw] bg-gradient-to-b from-black via-blue-950 to-indigo-950 backdrop-blur-3xl  xl:pokemain-bg bg-cover bg-center relative ${
+      className={`h-[100%] w-[100%] bg-gradient-to-b from-black to-blue-950 backdrop-blur-3xl ${
         isVisible ? "backdrop-filter backdrop-blur-lg" : ""
       }`}
     >
@@ -141,17 +142,17 @@ export default function Pokemain({
         </div>
       )}
       <div className={(isVisible || visibleTop) && "contentModal"}>
-        <div className="p-7 xl:p-0 xl:w-[100dvw]">
-          {/* <h1 className="font-bold bg-gradient-to-b from-blue-400 to-purple-600 text-transparent bg-clip-text text-5xl xl:text-left xl:p-5"> */}
-          <h1 className="pokedevTextShadow font-bold text-5xl xl:text-left xl:p-5">
-            PokeDev
-          </h1>
+        <div className="p-7 md:p-0 md:w-[100%]">
+          <Link className="hover:scale-125 duration-300" to="/">
+            <PokedevTitle />
+          </Link>
+
           <div className="flex items-center mb-5 mt-10 ">
-            <div className="bg-gray-300 w-1/2 h-1 xl:bg-gray-300 xl:w-1/2 xl:h-1 ">
+            <div className="bg-gray-300 w-1/2 h-1 lg:bg-gray-300 lg:w-1/2 lg:h-1 ">
               <p className="invisible">Lorem</p>
             </div>
 
-            <div className="xl:flex 1">
+            <div className="lg:flex 1">
               <SideBarTop
                 url={url}
                 setUrl={setUrl}
@@ -162,13 +163,13 @@ export default function Pokemain({
                 setVisibleTop={setVisibleTop}
               />
             </div>
-            <div className="bg-gray-300 w-1/2 h-1 xl:bg-gray-300 xl:w-1/2 xl:h-1">
+            <div className="bg-gray-300 w-1/2 h-1 lg:bg-gray-300 lg:w-1/2 lg:h-1">
               <p className="invisible">Lorem</p>
             </div>
           </div>
         </div>
-        <div className="xl:flex xl:flex-wrap xl:w-[100dvw]">
-          <div className=" xl:w-[100%] xl:flex">
+        <div className="lg:flex lg:flex-wrap lg:w-[100%]">
+          <div className=" lg:w-[100%] lg:flex">
             <div>
               {getCurrentCards().length ? (
                 <CardProfil
@@ -178,13 +179,13 @@ export default function Pokemain({
                   filteredUser={getCurrentFilter()}
                 />
               ) : (
-                <div className=" xl:h-[auto] xl:w-[100%] m-20 ">
+                <div className=" lg:h-[auto] lg:w-[100%] m-20 ">
                   <img src="src/assets/404.png" alt="erreur 404" />{" "}
                 </div>
               )}
             </div>
             <div className="w-[100%] flex flex-col justify-center items-center ">
-              <div className="p-4 w-[100%] xl:w-[50%] xl:h-[70%] h-[50vh]text-black">
+              <div className="p-4 w-[100%] lg:w-[50dvw]text-black">
                 <PokedevProfil
                   dataSelected={dataSelected}
                   langSelected={langSelected}
@@ -223,12 +224,12 @@ export default function Pokemain({
                   </button>
                 </div>
               </div>
-              <div className="hidden xl:flex xl:mt-5 xl:w-[17dvw] xl:justify-between  xl:p-3">
+              <div className="hidden lg:flex lg:mt-5 lg:w-[17dvw] lg:justify-between  lg:p-3">
                 <button type="button" onClick={prevCards}>
                   <img
                     src={leftArrow}
                     alt="arrow"
-                    className="xl:cursor-pointer xl:w-[3.5dvw]"
+                    className="lg:cursor-pointer lg:w-[3.5dvw]"
                   />
                 </button>
 
@@ -239,7 +240,7 @@ export default function Pokemain({
                   <img
                     src={rightArrow}
                     alt="arrow"
-                    className="xl:cursor-pointer xl:w-[3.5dvw]"
+                    className="lg:cursor-pointer lg:w-[3.5dvw]"
                   />
                 </button>
               </div>
@@ -247,11 +248,11 @@ export default function Pokemain({
           </div>
           <div />
         </div>
-        <div className="flex m-5 justify-center xl:hidden">
+        <div className="flex m-5 justify-center lg:hidden">
           <img src={darkLogo} className="w-[39dvw] cursor-pointer" alt="logo" />
         </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

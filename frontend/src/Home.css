@@ -1,9 +1,15 @@
 .fleche {
   background-color: #fff;
-  width: 25%;
-  animation: MoveUpDown 2s linear infinite;
+  width: 35%;
+  /* animation: MoveUpDown 2s linear infinite; */
   border: 5px #fff solid;
   border-radius: 80%;
+}
+.logoShadow:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.animateMove {
+  animation: MoveUpDown 2s linear infinite;
 }
 
 @keyframes MoveUpDown {
