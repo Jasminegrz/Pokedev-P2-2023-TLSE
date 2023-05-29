@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "primereact/button";
 import Footer from "../components/Footer";
+import PokedevTitle from "../components/PokedevTitle";
 
 function About({ aboutProfiles, getAboutProfiles }) {
   const [count, setCount] = useState(0);
@@ -127,9 +128,10 @@ function About({ aboutProfiles, getAboutProfiles }) {
   return (
     <div className="mainAbout">
       <div className="p-7 xl:p-0 xl:w-[100dvw]">
-        <h1 className="xl:ml-20 font-bold bg-gradient-to-b from-indigo-400 to-purple-600 text-transparent bg-clip-text text-5xl xl:m-3 xl:text-left xl:p-5">
+        <PokedevTitle />
+        {/* <h1 className="xl:ml-20 font-bold bg-gradient-to-b from-indigo-400 to-purple-600 text-transparent bg-clip-text text-5xl xl:m-3 xl:text-left xl:p-5">
           PokeDev
-        </h1>
+        </h1> */}
         <div className="xl:flex xl:items-center xl:mb-5">
           <div className="xl:bg-gray-300 xl:w-1/2 xl:h-1 ">
             <p className="hidden xl:invisible">Lorem</p>

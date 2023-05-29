@@ -1,7 +1,7 @@
-import "./App.css";
-import "./About.css";
+import "./css/App.css";
+import "./css/About.css";
 import "./css/SideBarTop.css";
-import "./Home.css";
+import "./css/Home.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 // theme

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import "primereact/resources/themes/lara-dark-indigo/theme.css";
 import "primereact/resources/primereact.css";
@@ -12,9 +12,10 @@ import ModalProfile from "../components/ModalProfile";
 import "../css/CardProfil.css";
 import "../css/ModalProfile.css";
 import Footer from "../components/Footer";
-import lightLogo from "../assets/LogoLight.png";
+import darkLogo from "../assets/LogoDark.png";
 import leftArrow from "../assets/arrow-left-test.svg";
 import rightArrow from "../assets/arrow-right-test.svg";
+import PokedevTitle from "../components/PokedevTitle";
 
 // dataTabUser est une fonction qui retourne un tableau d'objet avec les infos des users 6 par 6
 // qui est passé en props au composant CardProfil, il est le résultat de l'appel API sur le endpoint user
@@ -40,6 +41,7 @@ export default function Pokemain({
   const [dataRepoSelected, setDataRepoSelected] = useState([]);
   const [langSelected, setLangSelected] = useState([]);
   const [click, setClick] = useState(false);
+  const [visibleTop, setVisibleTop] = useState(false);
 
   const handleClickProfil = (el) => {
     setSelected(el);
@@ -116,132 +118,141 @@ export default function Pokemain({
   scrollToTop();
   return (
     <div
-      className={`h-[auto] w-[100dvw] bg-gradient-to-b from-indigo-900 backdrop-blur-3xl via-rgba-27-3-199-3615 to-blue-100 xl:pokemain-bg bg-cover bg-center relative ${
+      className={`h-[100%] w-[100%] bg-gradient-to-b from-black to-blue-950 backdrop-blur-3xl ${
         isVisible ? "backdrop-filter backdrop-blur-lg" : ""
       }`}
     >
-      <div className="p-7 xl:p-0 xl:w-[100dvw]">
-        <h1 className="font-bold bg-gradient-to-b from-indigo-400 to-purple-600 text-transparent bg-clip-text text-5xl xl:text-left xl:p-5">
-          PokeDev
-        </h1>
-        <div className="flex items-center mb-5 mt-10 ">
-          <div className="bg-gray-300 w-1/2 h-1 xl:bg-gray-300 xl:w-1/2 xl:h-1 ">
-            <p className="invisible">Lorem</p>
-          </div>
-
-          <div className="xl:flex 1">
-            <SideBarTop
-              url={url}
-              setUrl={setUrl}
+      {loading ? (
+        <img src={loadingImg} alt="Loading..." />
+      ) : (
+        <div>
+          {isVisible && (
+            <ModalProfile
+              dataRepoSelected={dataRepoSelected}
+              dataSelected={dataSelected}
+              langSelected={langSelected}
+              click={click}
+              setIsVisible={setIsVisible}
+              dataRepos={dataRepos}
               dataTab={dataTab}
-              filteredUrl={filteredUrl}
-              setFilteredUrl={setFilteredUrl}
+              lang={lang}
+              dataGiters={dataGiters}
             />
-          </div>
-          <div className="bg-gray-300 w-1/2 h-1 xl:bg-gray-300 xl:w-1/2 xl:h-1">
-            <p className="invisible">Lorem</p>
+          )}
+        </div>
+      )}
+      <div className={(isVisible || visibleTop) && "contentModal"}>
+        <div className="p-7 md:p-0 md:w-[100%]">
+          <Link className="hover:scale-125 duration-300" to="/">
+            <PokedevTitle />
+          </Link>
+
+          <div className="flex items-center mb-5 mt-10 ">
+            <div className="bg-gray-300 w-1/2 h-1 lg:bg-gray-300 lg:w-1/2 lg:h-1 ">
+              <p className="invisible">Lorem</p>
+            </div>
+
+            <div className="lg:flex 1">
+              <SideBarTop
+                url={url}
+                setUrl={setUrl}
+                dataTab={dataTab}
+                filteredUrl={filteredUrl}
+                setFilteredUrl={setFilteredUrl}
+                visibleTop={visibleTop}
+                setVisibleTop={setVisibleTop}
+              />
+            </div>
+            <div className="bg-gray-300 w-1/2 h-1 lg:bg-gray-300 lg:w-1/2 lg:h-1">
+              <p className="invisible">Lorem</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="xl:flex xl:flex-wrap xl:w-[100dvw]">
-        <div className=" xl:w-[100%] xl:flex">
-          <div>
-            {getCurrentCards().length ? (
-              <CardProfil
-                dataTabUsers={getCurrentCards()}
-                handleClickProfil={handleClickProfil}
-                dataGiters={dataGiters}
-                filteredUser={getCurrentFilter()}
-              />
-            ) : (
-              <div className=" xl:h-[auto] xl:w-[100%] m-20 ">
-                <img src="src/assets/404.png" alt="erreur 404" />{" "}
-              </div>
-            )}
-          </div>
-          <div className="w-[100%] flex flex-col justify-center items-center ">
-            <div className="xl:w-[50%] xl:h-[70%] h-[50vh]text-black">
-              <PokedevProfil
-                dataSelected={dataSelected}
-                langSelected={langSelected}
-                click={click}
-                count={count}
-                setCount={setCount}
-                dataRepos={dataRepos}
-                dataTab={dataTab}
-                lang={lang}
-                dataGiters={dataGiters}
-                setIsVisible={setIsVisible}
-              />
-              {loading ? (
-                <img src={loadingImg} alt="Loading..." />
+        <div className="lg:flex lg:flex-wrap lg:w-[100%]">
+          <div className=" lg:w-[100%] lg:flex">
+            <div>
+              {getCurrentCards().length ? (
+                <CardProfil
+                  dataTabUsers={getCurrentCards()}
+                  handleClickProfil={handleClickProfil}
+                  dataGiters={dataGiters}
+                  filteredUser={getCurrentFilter()}
+                />
               ) : (
-                <div>
-                  {isVisible && (
-                    <ModalProfile
-                      dataRepoSelected={dataRepoSelected}
-                      dataSelected={dataSelected}
-                      langSelected={langSelected}
-                      click={click}
-                      setIsVisible={setIsVisible}
-                      dataRepos={dataRepos}
-                      dataTab={dataTab}
-                      lang={lang}
-                      dataGiters={dataGiters}
-                    />
-                  )}
+                <div className=" lg:h-[auto] lg:w-[100%] m-20 ">
+                  <img src="src/assets/404.png" alt="erreur 404" />{" "}
                 </div>
               )}
-              <div className="flex justify-center gap-7 p-3 ">
-                <button onClick={prevCards} type="button" className="hidden">
+            </div>
+            <div className="w-[100%] flex flex-col justify-center items-center ">
+              <div className="p-4 w-[100%] lg:w-[50dvw]text-black">
+                <PokedevProfil
+                  dataSelected={dataSelected}
+                  langSelected={langSelected}
+                  click={click}
+                  count={count}
+                  setCount={setCount}
+                  dataRepos={dataRepos}
+                  dataTab={dataTab}
+                  lang={lang}
+                  dataGiters={dataGiters}
+                  setIsVisible={setIsVisible}
+                />
+
+                <div className="flex justify-center gap-7 p-3 ">
+                  <button onClick={prevCards} type="button" className="hidden">
+                    <img
+                      src={leftArrow}
+                      alt="arrow"
+                      className="cursor-pointer w-[3.5dvw]"
+                    />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={randomCards}
+                    className="hidden"
+                  >
+                    <img src="./src/assets/random-btn.png" alt="random-btn" />
+                  </button>
+                  <button className="hidden" onClick={nextCards} type="button">
+                    <img
+                      src={rightArrow}
+                      alt="arrow"
+                      className="cursor-pointer w-[3.5dvw]"
+                    />
+                  </button>
+                </div>
+              </div>
+              <div className="hidden lg:flex lg:mt-5 lg:w-[17dvw] lg:justify-between  lg:p-3">
+                <button type="button" onClick={prevCards}>
                   <img
                     src={leftArrow}
                     alt="arrow"
-                    className="cursor-pointer w-[3.5dvw]"
+                    className="lg:cursor-pointer lg:w-[3.5dvw]"
                   />
                 </button>
 
-                <button type="button" onClick={randomCards} className="hidden">
+                <button type="button" onClick={randomCards} className="">
                   <img src="./src/assets/random-btn.png" alt="random-btn" />
                 </button>
-                <button className="hidden" onClick={nextCards} type="button">
+                <button onClick={nextCards} type="button">
                   <img
                     src={rightArrow}
                     alt="arrow"
-                    className="cursor-pointer w-[3.5dvw]"
+                    className="lg:cursor-pointer lg:w-[3.5dvw]"
                   />
                 </button>
               </div>
             </div>
-            <div className="hidden xl:flex xl:mt-5 xl:w-[17dvw] xl:justify-between  xl:p-3">
-              <button type="button" onClick={prevCards}>
-                <img
-                  src={leftArrow}
-                  alt="arrow"
-                  className="xl:cursor-pointer xl:w-[3.5dvw]"
-                />
-              </button>
-
-              <button type="button" onClick={randomCards} className="">
-                <img src="./src/assets/random-btn.png" alt="random-btn" />
-              </button>
-              <button onClick={nextCards} type="button">
-                <img
-                  src={rightArrow}
-                  alt="arrow"
-                  className="xl:cursor-pointer xl:w-[3.5dvw]"
-                />
-              </button>
-            </div>
           </div>
+          <div />
         </div>
-        <div />
+        <div className="flex m-5 justify-center lg:hidden">
+          <img src={darkLogo} className="w-[39dvw] cursor-pointer" alt="logo" />
+        </div>
+        <Footer />
       </div>
-      <div className="flex m-5 justify-center xl:hidden">
-        <img src={lightLogo} className="w-[39dvw] cursor-pointer" alt="logo" />
-      </div>
-
-      <Footer />
     </div>
   );
 }

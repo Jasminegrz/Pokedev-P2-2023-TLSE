@@ -46,7 +46,7 @@
 }
 
 .tabHeader {
-  background-color: #041b3b;
+  /* background-color: #041b3b; */
   border: 1px #041b3b solid;
   height: 40px;
   border-top-left-radius: 30px;

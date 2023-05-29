@@ -16,10 +16,11 @@ export default function SideBarTop({
   setUrl,
   filteredUrl,
   setFilteredUrl,
+  visibleTop,
+  setVisibleTop,
 }) {
   const [displayLocationValue, setdisplayLocationValue] = useState("");
   const [activeLanguages, setActiveLanguages] = useState([]);
-  const [visibleTop, setVisibleTop] = useState(false);
 
   useEffect(() => {
     if (
@@ -59,18 +60,14 @@ export default function SideBarTop({
     <div className="card">
       <div>
         <button
-          className="border-white border-4 rounded-full"
+          className="border-white border-4 rounded-full transition ease-in-out duration-300 hover:scale-110 hover:-translate-y-1"
           onClick={() => {
             setVisibleTop(true);
             handleLogoClick();
           }}
           type="button"
         >
-          <img
-            src={lightLogo}
-            className="w-[5dvw] transition-all duration-300 hover:w-[7dvw] cursor-pointer"
-            alt="logo"
-          />
+          <img src={lightLogo} className="w-[5dvw] cursor-pointer" alt="logo" />
         </button>
       </div>
 
@@ -141,6 +138,16 @@ SideBarTop.propTypes = {
     )
   ).isRequired,
   setFilteredUrl: PropTypes.arrayOf(
+    PropTypes.objectOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])
+    )
+  ).isRequired,
+  visibleTop: PropTypes.arrayOf(
+    PropTypes.objectOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])
+    )
+  ).isRequired,
+  setVisibleTop: PropTypes.arrayOf(
     PropTypes.objectOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])
     )
