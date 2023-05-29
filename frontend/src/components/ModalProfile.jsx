@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import mediumLogo from "../assets/LogoMedium.png";
 import X from "../assets/x-circle.svg";
 import Etoile from "./etoiles";
 
