@@ -6,13 +6,11 @@
 .PokeProfil {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  height: 100%;
+  background: linear-gradient(180deg, #2e4db5 0%, #fff 100%);
   align-items: center;
   justify-content: flex-start;
   align-content: stretch;
   box-shadow: 5px 5px 10px white;
-  background: linear-gradient(180deg, #351d7c 0%, #ffffff 100%);
   text-shadow: 5px 5px 10px #2a69c0;
   border-radius: 30px;
 
@@ -23,7 +21,7 @@ div.PokeProfil {
   max-width: 420px;
 }
 .ProfilSelected {
-  height: 900px;
+  height: auto;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   border-bottom-left-radius: 30px;
@@ -117,33 +115,24 @@ li {
   color: #fff;
 }
 .PokedevHeader {
-  background-color: #041b3b;
   border: 1px #041b3b solid;
-  height: 80px;
+  height: 30%;
+  min-height: 80px;
   width: 100%;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
 }
 
 .PokedevFooter {
-  background-color: #041b3b;
   border: 1px #041b3b solid;
-  height: 80px;
+  height: 30%;
+  min-height: 80px;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   width: 100%;
 }
 
-@media screen and (min-width: 900px) {
-  .PokeProfil {
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(180deg, #05116b 0%, #fff 100%);
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-  }
+@media screen and (min-width: 1024px) {
   .ProfilSelected {
     height: 100%;
     width: 100%;
@@ -190,13 +179,5 @@ li {
   }
   .ProfilSelected.filter {
     display: none;
-  }
-
-  .PokedevHeader {
-    height: 250px;
-  }
-
-  .PokedevFooter {
-    height: 250px;
   }
 }

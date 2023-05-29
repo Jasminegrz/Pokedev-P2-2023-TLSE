@@ -9,13 +9,11 @@
   --textfont: "consolas";
   --textcolor_card: black;
   --cardcolor: rgb(48, 48, 130);
+  height: 100dvh;
 }
 
 * {
   font-family: var(--textfont);
-}
-body {
-  height: 100dvh;
 }
 .pokedevTextShadow {
   text-shadow: 1px 1px 10px white;
@@ -49,10 +47,3 @@ body {
     }
   }
 }
-
-/* @font-face {
-  font-family: "My Font";
-  src: url("./fonts/pixelplay.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-} */

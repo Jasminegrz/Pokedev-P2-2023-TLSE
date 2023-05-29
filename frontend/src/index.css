@@ -25,4 +25,10 @@
   .via-rgba-27-3-199-3615 {
     background-color: rgba(27, 3, 199, 0.3615);
   }
+  .card-bg-haut {
+    background-image: url("./assets/bannière_haut.jpg");
+  }
+  .card-bg-bas {
+    background-image: url("./assets/bannière_bas.jpg");
+  }
 }
